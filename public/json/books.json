@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Responsive design with Bootstrap",
+    "author": "Holgersson A.",
+    "category": "UX",
+    "price": 500,
+    "description": "Fill this in"
+  },
+  {
+    "title": "HTML - an introduction",
+    "author": "Holgersson A.",
+    "category": "HTML",
+    "price": 600,
+    "description": "Fill this in"
+  },
+  {
+    "title": "CSS - an introduction",
+    "author": "Holgersson A.",
+    "category": "CSS",
+    "price": 550,
+    "description": "Fill this in"
+  },
+  {
+    "title": "JavaScript - an introduction",
+    "author": "Holgersson A.",
+    "category": "JavaScript",
+    "price": 630,
+    "description": "Fill this in"
+  },
+  {
+    "title": "What use is UX?",
+    "author": "Lorem I.",
+    "category": "UX",
+    "price": 200,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "UX - the art of understanding people",
+    "author": "Lorem I.",
+    "category": "UX",
+    "price": 460,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Usefull buttons, tables, and knick-knacks",
+    "author": "Lorem I.",
+    "category": "UX",
+    "price": 330,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "UX rules!",
+    "author": "Lorem I.",
+    "category": "UX",
+    "price": 500,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Structure! Structure! Structure!",
+    "author": "Lorem I.",
+    "category": "HTML",
+    "price": 470,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "A webpage's skeleton",
+    "author": "Lorem I.",
+    "category": "HTML",
+    "price": 700,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "HTML for dummies",
+    "author": "Lorem I.",
+    "category": "HTML",
+    "price": 500,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Advanved HTML",
+    "author": "Lorem I.",
+    "category": "HTML",
+    "price": 770,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "A webpage's soul",
+    "author": "Lorem I.",
+    "category": "CSS",
+    "price": 700,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "The art of webpages",
+    "author": "Lorem I.",
+    "category": "CSS",
+    "price": 490,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "From dullness to greatness",
+    "author": "Lorem I.",
+    "category": "CSS",
+    "price": 800,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Presentation maketh impression",
+    "author": "Lorem I.",
+    "category": "CSS",
+    "price": 560,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "A webpage's brain",
+    "author": "Lorem I.",
+    "category": "JavaScript",
+    "price": 700,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "JavaScript for dummies",
+    "author": "Lorem I.",
+    "category": "JavaScript",
+    "price": 500,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Script for your life!",
+    "author": "Lorem I.",
+    "category": "JavaScript",
+    "price": 200,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  },
+  {
+    "title": "Functionality is king",
+    "author": "Lorem I.",
+    "category": "JavaScript",
+    "price": 490,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
+  }
+]
