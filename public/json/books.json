@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "title": "Responsive design with Bootstrap",
     "author": "Holgersson A.",
     "category": "UX",
@@ -7,6 +8,7 @@
     "description": "Fill this in"
   },
   {
+    "id": 2,
     "title": "HTML - an introduction",
     "author": "Holgersson A.",
     "category": "HTML",
@@ -14,6 +16,7 @@
     "description": "Fill this in"
   },
   {
+    "id": 3,
     "title": "CSS - an introduction",
     "author": "Holgersson A.",
     "category": "CSS",
@@ -21,6 +24,7 @@
     "description": "Fill this in"
   },
   {
+    "id": 4,
     "title": "JavaScript - an introduction",
     "author": "Holgersson A.",
     "category": "JavaScript",
@@ -28,6 +32,7 @@
     "description": "Fill this in"
   },
   {
+    "id": 5,
     "title": "What use is UX?",
     "author": "Lorem I.",
     "category": "UX",
@@ -35,6 +40,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 6,
     "title": "UX - the art of understanding people",
     "author": "Lorem I.",
     "category": "UX",
@@ -42,6 +48,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 7,
     "title": "Usefull buttons, tables, and knick-knacks",
     "author": "Lorem I.",
     "category": "UX",
@@ -49,6 +56,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 8,
     "title": "UX rules!",
     "author": "Lorem I.",
     "category": "UX",
@@ -56,6 +64,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 9,
     "title": "Structure! Structure! Structure!",
     "author": "Lorem I.",
     "category": "HTML",
@@ -63,6 +72,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 10,
     "title": "A webpage's skeleton",
     "author": "Lorem I.",
     "category": "HTML",
@@ -70,6 +80,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 11,
     "title": "HTML for dummies",
     "author": "Lorem I.",
     "category": "HTML",
@@ -77,6 +88,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 12,
     "title": "Advanced HTML",
     "author": "Lorem I.",
     "category": "HTML",
@@ -84,6 +96,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 13,
     "title": "A webpage's soul",
     "author": "Lorem I.",
     "category": "CSS",
@@ -91,6 +104,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 14,
     "title": "The art of webpages",
     "author": "Lorem I.",
     "category": "CSS",
@@ -98,6 +112,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 15,
     "title": "From dullness to greatness",
     "author": "Lorem I.",
     "category": "CSS",
@@ -105,6 +120,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 16,
     "title": "Presentation maketh impression",
     "author": "Lorem I.",
     "category": "CSS",
@@ -112,6 +128,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 17,
     "title": "A webpage's brain",
     "author": "Lorem I.",
     "category": "JavaScript",
@@ -119,6 +136,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 18,
     "title": "JavaScript for dummies",
     "author": "Lorem I.",
     "category": "JavaScript",
@@ -126,6 +144,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 19,
     "title": "Script for your life!",
     "author": "Lorem I.",
     "category": "JavaScript",
@@ -133,6 +152,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea ipsa at facilis officia, quae beatae architecto placeat saepe minus quas adipisci laboriosam. Illum eius voluptas a culpa reprehenderit totam?"
   },
   {
+    "id": 20,
     "title": "Functionality is king",
     "author": "Lorem I.",
     "category": "JavaScript",
