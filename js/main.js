@@ -1,23 +1,25 @@
-import '../scss/style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import '../scss/style.scss'
+import { getJSON } from './utils/getJSON.js'
+import { imageHelper } from './utils/imageHelper'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+async function start() {
+  let books = await getJSON('/json/books.json')
 
-setupCounter(document.querySelector('#counter'))
+  let html = ''
+  for (let book of books) {
+    // Displays each books image
+    let image = imageHelper(book.title)
+    html += `<img class="bookImage" src="${image}" alt="Image of a book">`
+
+    // Displays the information of each book
+    html += '<div class="book">'
+    for (let key in book) {
+      let value = book[key]
+      html += `<p><span>${key}:</span> ${value}</p>`
+    }
+    html += '</div>'
+  }
+  document.querySelector('.bookList').innerHTML = html
+}
+
+start()
