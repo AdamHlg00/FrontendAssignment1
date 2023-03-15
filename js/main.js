@@ -1,6 +1,10 @@
 import '../scss/style.scss'
 import { getJSON } from './utils/getJSON.js'
 import { imageHelper } from './utils/imageHelper'
+import {
+  sortByTitleAsc, sortByTitleDesc, sortByPriceAsc,
+  sortByPriceDesc, sortByAuthorAsc, sortByAuthorDesc
+} from './utils/sorting'
 
 let chosenSortOption = 'Title (Ascending)',     // Default sort option
   books
@@ -32,36 +36,6 @@ function addSortingOptions() {
   })
 }
 
-function sortByTitleAsc(books) {
-  books.sort(({ title: aTitle }, { title: bTitle }) =>
-    aTitle > bTitle ? 1 : -1)
-}
-
-function sortByTitleDesc(books) {
-  books.sort(({ title: aTitle }, { title: bTitle }) =>
-    aTitle > bTitle ? -1 : 1)
-}
-
-function sortByPriceAsc(books) {
-  books.sort(({ price: aPrice }, { price: bPrice }) =>
-    aPrice > bPrice ? 1 : -1)
-}
-
-function sortByPriceDesc(books) {
-  books.sort(({ price: aPrice }, { price: bPrice }) =>
-    aPrice > bPrice ? -1 : 1)
-}
-
-function sortByAuthorAsc(books) {
-  books.sort(({ author: aAuthor }, { author: bAuthor }) =>
-    aAuthor > bAuthor ? 1 : -1)
-}
-
-function sortByAuthorDesc(books) {
-  books.sort(({ author: aAuthor }, { author: bAuthor }) =>
-    aAuthor > bAuthor ? -1 : 1)
-}
-
 // Displays books
 function displayBooks() {
   let html = ''
@@ -84,7 +58,6 @@ function displayBooks() {
   }
 
   if (chosenSortOption === 'Author (Ascending)') {
-    console.log('hej')
     sortByAuthorAsc(filteredBooks)
   }
 
