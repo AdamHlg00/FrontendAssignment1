@@ -3,105 +3,42 @@ import { getJSON } from './utils/getJSON.js'
 import { imageHelper } from './utils/imageHelper'
 import {
   sortByTitleAsc, sortByTitleDesc, sortByPriceAsc,
-  sortByPriceDesc, sortByAuthorAsc, sortByAuthorDesc
+  sortByPriceDesc, sortByAuthorAsc, sortByAuthorDesc,
+  addSortingOptions
 } from './utils/sorting'
+
+import { getCategories, getAuthors, addFilters } from './utils/filtering'
 
 let chosenSortOption = 'Title (Ascending)',     // Default sort option
   books,
-  chosenCategoryFilter = 'all',
-  chosenAuthorFilter = 'all',
-  chosenPriceFilterMin = 0,
-  chosenPriceFilterMax = 800,
-  categories = [],
-  authors = [],
-  prices = []
+  chosenCategoryFilter = 'all',     // Default category filter
+  chosenAuthorFilter = 'all',     // Default author filter
+  chosenPriceFilterMin = 0,     // Default minimum price
+  chosenPriceFilterMax = 800      // Default maximum price
 
+// Main function
 async function start() {
   books = await getJSON('/json/books.json')
 
-  getCategories()
-  getAuthors()
+  getCategories(books)
+  getAuthors(books)
   addFilters()
+  addFilterEvents()
   addSortingOptions()
+  addSortingEvents()
   displayBooks()
 }
 
-function addSortingOptions() {
-  document.querySelector('.sortingOptions').innerHTML = /*html*/`
-    <label><span>Sort by:</span>
-      <select class="sortOption">
-        <option>Title (Ascending)</option>
-        <option>Title (Descending)</option>
-        <option>Price (Ascending)</option>
-        <option>Price (Descending)</option>
-        <option>Author (Ascending)</option>
-        <option>Author (Descending)</option>
-      </select>
-    </label>
-  `
-
+// Adds event listeners for sorting options
+function addSortingEvents() {
   document.querySelector('.sortOption').addEventListener('change', event => {
     chosenSortOption = event.target.value
     displayBooks()
   })
 }
 
-function getCategories() {
-  let withDuplicates = books.map(book => book.category)
-
-  categories = [...new Set(withDuplicates)]
-  categories.sort()
-}
-
-function getAuthors() {
-  let withDuplicates = books.map(book => book.author)
-
-  authors = [...new Set(withDuplicates)]
-  authors.sort()
-}
-
-function getPrices() {
-  let withDuplicates = books.map(book => book.price)
-
-  prices = [...new Set(withDuplicates)]
-
-  prices.sort()
-}
-
-function addFilters() {
-  document.querySelector('.filters').innerHTML = /*html*/`
-    <label><span>Filter by category:</span>
-      <select class="categoryFilter">
-        <option>all</option>
-        ${categories.map(category => `<option>${category}</option>`).join('')}
-      </select>
-    </label>
-
-    <label><span>Filter by authors:</span>
-      <select class="authorFilter">
-        <option>all</option>
-        <option>Holgersson A.</option>
-        <option>Lorem I.</option>
-      </select>
-    </label>
-    
-    <label><span>Filter by price-spans:</span>
-      <select class="priceFilterMin">
-        <option>0</option>
-        <option>200</option>
-        <option>400</option>
-        <option>600</option>
-      </select>
-      -
-      <select class="priceFilterMax">
-        <option>800</option>
-        <option>600</option>
-        <option>400</option>
-        <option>200</option>
-      </select>
-    </label>
-  `
-
+// Adds event listeners for filter options
+function addFilterEvents() {
   // Category event listener
   document.querySelector('.categoryFilter').addEventListener('change', event => {
     chosenCategoryFilter = event.target.value
@@ -132,7 +69,6 @@ function addFilters() {
 
 // Displays books
 function displayBooks() {
-
   // Filtering categories
   let filteredBooksCategory = books.filter(
     ({ category }) => chosenCategoryFilter === 'all' || chosenCategoryFilter === category
