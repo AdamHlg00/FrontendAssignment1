@@ -8,6 +8,7 @@ import {
 } from './utils/sorting'
 
 import { getCategories, getAuthors, addFilters } from './utils/filtering'
+import { displayModal } from './utils/informationModal'
 
 import * as bootstrap from 'bootstrap'
 
@@ -17,19 +18,6 @@ let chosenSortOption = 'Title (Ascending)',     // Default sort option
   chosenAuthorFilter = 'all',     // Default author filter
   chosenPriceFilterMin = 0,     // Default minimum price
   chosenPriceFilterMax = 800      // Default maximum price
-
-// Main function
-async function start() {
-  books = await getJSON('/json/books.json')
-
-  getCategories(books)
-  getAuthors(books)
-  addFilters()
-  addFilterEvents()
-  addSortingOptions()
-  addSortingEvents()
-  displayBooks()
-}
 
 // Adds event listeners for sorting options
 function addSortingEvents() {
@@ -95,31 +83,28 @@ function displayBooks() {
   let filteredBooks = partlyFilteredBooks.filter((book) =>
     filteredBooksPrice.includes(book))
 
+  // Sorting
   if (chosenSortOption === 'Title (Ascending)') {
     sortByTitleAsc(filteredBooks)
   }
-
   if (chosenSortOption === 'Title (Descending)') {
     sortByTitleDesc(filteredBooks)
   }
-
   if (chosenSortOption === 'Price (Ascending)') {
     sortByPriceAsc(filteredBooks)
   }
-
   if (chosenSortOption === 'Price (Descending)') {
     sortByPriceDesc(filteredBooks)
   }
-
   if (chosenSortOption === 'Author (Ascending)') {
     sortByAuthorAsc(filteredBooks)
   }
-
   if (chosenSortOption === 'Author (Descending)') {
     sortByAuthorDesc(filteredBooks)
   }
 
   // Would have used map here, but couldn't get the bootstrap grid system to work properly with it
+  // Creates HTML for displaying the books
   let html = ''
   html += '<div class="container overflow-hidden">'
   html += '<div class="row">'
@@ -127,9 +112,9 @@ function displayBooks() {
     html += '<div class="col-4 p-2 border border-white border-3 bg-aqua book">'
     //Gets the books corresponding image using the title
     html += `<img class="bookImage" id="${book.id}" src="${imageHelper(book.title)}">`
-    html += `<button class="btn btn-danger">Hej</button>`
     html += `<p>${book.title}</p>`
-    html += `<p>${book.price}`
+    html += `<p>${book.price} SEK</p>`
+    html += `<div><button class="btn btn-danger">Buy</button></div>`
     html += '</div>'
   }
 
@@ -138,33 +123,21 @@ function displayBooks() {
 
   document.querySelector('.bookList').innerHTML = html
 
-  const images = document.querySelectorAll('.bookList .bookImage')
-  for (let i = 0; i < images.length; i++) {
-    images[i].addEventListener('click', function (event) {
-      ye(event.target.id)
-      let clickedBook = filteredBooks.filter((book) => {
-        return book.id.toString() === event.target.id
-      })
-      console.log(clickedBook[0].title)
-      let modalTitle = document.querySelector('.modal-title')
-      let modalBody = document.querySelector('.modal-body')
-      modalTitle.innerHTML = clickedBook[0].title
-      modalBody.innerHTML = `
-        <img class="bookImageModal" src="${imageHelper(clickedBook[0].title)}">
-        <p><div class="modalText">Title:</div> ${clickedBook[0].title}
-        <p><div class="modalText">Category:</div> ${clickedBook[0].category}</p>
-        <p><div class="modalText">Author:</div> ${clickedBook[0].author}</p>
-        <p><div class="modalText">Price:</div> ${clickedBook[0].price} SEK</p>
-        <p><div class="modalText">Description:</div> ${clickedBook[0].description}</p>
-      `
-      let modal = new bootstrap.Modal(document.getElementById('myModal'))
-      modal.show()
-    })
-  }
+  // Modal for additional information
+  displayModal(filteredBooks)
 }
-function ye(id) {
-  console.log("ye")
-  console.log(id)
+
+// Main function
+async function start() {
+  books = await getJSON('/json/books.json')
+
+  getCategories(books)
+  getAuthors(books)
+  addFilters()
+  addFilterEvents()
+  addSortingOptions()
+  addSortingEvents()
+  displayBooks()
 }
 
 start()
