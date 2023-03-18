@@ -9,6 +9,8 @@ import {
 
 import { getCategories, getAuthors, addFilters } from './utils/filtering'
 
+import * as bootstrap from 'bootstrap'
+
 let chosenSortOption = 'Title (Ascending)',     // Default sort option
   books,
   chosenCategoryFilter = 'all',     // Default category filter
@@ -117,22 +119,52 @@ function displayBooks() {
     sortByAuthorDesc(filteredBooks)
   }
 
-  // Maps the values of a book to their respective positions in HTML
-  let htmlArray = filteredBooks.map(({
-    id, title, author, category, price, description
-  }) => /*html*/`
-    <div class="book">
-      <img class="bookImage" src="${imageHelper(title)}" alt="Image of a book">     <!--Gets the books corresponding image using the title-->
-      <p><span>id: </span>${id}</p>
-      <p><span>title: </span>${title}</p>
-      <p><span>author: </span>${author}</p>
-      <p><span>category: </span>${category}</p>
-      <p><span>price: </span>${price}</p>
-      <p><span>description: </span>${description}</p>
-    </div>
-  `)
+  // Would have used map here, but couldn't get the bootstrap grid system to work properly with it
+  let html = ''
+  html += '<div class="container overflow-hidden">'
+  html += '<div class="row">'
+  for (let book of filteredBooks) {
+    html += '<div class="col-4 p-2 border border-white border-3 bg-aqua book">'
+    //Gets the books corresponding image using the title
+    html += `<img class="bookImage" id="${book.id}" src="${imageHelper(book.title)}">`
+    html += `<button class="btn btn-danger">Hej</button>`
+    html += `<p>${book.title}</p>`
+    html += `<p>${book.price}`
+    html += '</div>'
+  }
 
-  document.querySelector('.bookList').innerHTML = htmlArray.join('')
+  html += '</div>'
+  html += '</div>'
+
+  document.querySelector('.bookList').innerHTML = html
+
+  const images = document.querySelectorAll('.bookList .bookImage')
+  for (let i = 0; i < images.length; i++) {
+    images[i].addEventListener('click', function (event) {
+      ye(event.target.id)
+      let clickedBook = filteredBooks.filter((book) => {
+        return book.id.toString() === event.target.id
+      })
+      console.log(clickedBook[0].title)
+      let modalTitle = document.querySelector('.modal-title')
+      let modalBody = document.querySelector('.modal-body')
+      modalTitle.innerHTML = clickedBook[0].title
+      modalBody.innerHTML = `
+        <img class="bookImageModal" src="${imageHelper(clickedBook[0].title)}">
+        <p><div class="modalText">Title:</div> ${clickedBook[0].title}
+        <p><div class="modalText">Category:</div> ${clickedBook[0].category}</p>
+        <p><div class="modalText">Author:</div> ${clickedBook[0].author}</p>
+        <p><div class="modalText">Price:</div> ${clickedBook[0].price} SEK</p>
+        <p><div class="modalText">Description:</div> ${clickedBook[0].description}</p>
+      `
+      let modal = new bootstrap.Modal(document.getElementById('myModal'))
+      modal.show()
+    })
+  }
+}
+function ye(id) {
+  console.log("ye")
+  console.log(id)
 }
 
 start()
