@@ -127,15 +127,8 @@ async function displayBooks() {
   document.querySelector('.bookList').innerHTML = html
 
   // Modal for additional information
-  /*cart = await displayModal(filteredBooks, cart)
-  console.log(cart)
-
-  //console.log(cart)
-
   // Adds books into cart
-  cart = await buyFunction(filteredBooks, cart)
-  console.log(cart)*/
-
+  // Race needed to allow cart to function properly
   Promise.race([displayModal(filteredBooks, cart), buyFunction(filteredBooks, cart)])
     .then((updatedCart) => {
       console.log(updatedCart)
@@ -169,14 +162,16 @@ async function displayBooks() {
       let price = calculatePrice(book, bookCount)
       totalPrice += price
 
-      html += '<p class="col-4 modalText">Title</p>'
-      html += '<p class="col-4 modalText">Amount</p>'
-      html += '<p class="col-4 modalText">Price</p>'
+      html += '<p class="col-3 modalText">Title</p>'
+      html += '<p class="col-3 modalText">Amount</p>'
+      html += '<p class="col-3 modalText">Unit price</p>'
+      html += '<p class="col-3 modalText">Price</p>'
 
       html += `
-        <p class="col-4">${book.title}</p>
-        <p class="col-4">${bookCount}</p>
-        <p class="col-4">${price} SEK</p>
+        <p class="col-3">${book.title}</p>
+        <p class="col-3">${bookCount}</p>
+        <p class="col-3">${book.price} SEK</p>
+        <p class="col-3">${price} SEK</p>
       `
     }
 
