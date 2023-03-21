@@ -11,6 +11,7 @@ import { getCategories, getAuthors, addFilters } from './utils/filtering'
 import { displayModal } from './utils/informationModal'
 
 import * as bootstrap from 'bootstrap'
+import { buyFunction } from './utils/buy'
 
 let chosenSortOption = 'Title (Ascending)',     // Default sort option
   books,
@@ -18,6 +19,8 @@ let chosenSortOption = 'Title (Ascending)',     // Default sort option
   chosenAuthorFilter = 'all',     // Default author filter
   chosenPriceFilterMin = 0,     // Default minimum price
   chosenPriceFilterMax = 800      // Default maximum price
+
+let cart = []     // Buyer's cart start empty
 
 // Adds event listeners for sorting options
 function addSortingEvents() {
@@ -58,7 +61,7 @@ function addFilterEvents() {
 }
 
 // Displays books
-function displayBooks() {
+async function displayBooks() {
   // Filtering categories
   let filteredBooksCategory = books.filter(
     ({ category }) => chosenCategoryFilter === 'all' || chosenCategoryFilter === category
@@ -111,10 +114,10 @@ function displayBooks() {
   for (let book of filteredBooks) {
     html += '<div class="col-4 p-2 border border-white border-3 bg-aqua book">'
     //Gets the books corresponding image using the title
-    html += `<img class="bookImage" id="${book.id}" src="${imageHelper(book.title)}">`
+    html += `<img class="bookImage" data-image-id="${book.id}" src="${imageHelper(book.title)}">`
     html += `<p>${book.title}</p>`
     html += `<p>${book.price} SEK</p>`
-    html += `<div><button class="btn btn-danger">Buy</button></div>`
+    html += `<div><button class="btn btn-danger buy" data-button-id="${book.id}">Buy</button></div>`
     html += '</div>'
   }
 
@@ -124,7 +127,83 @@ function displayBooks() {
   document.querySelector('.bookList').innerHTML = html
 
   // Modal for additional information
-  displayModal(filteredBooks)
+  /*cart = await displayModal(filteredBooks, cart)
+  console.log(cart)
+
+  //console.log(cart)
+
+  // Adds books into cart
+  cart = await buyFunction(filteredBooks, cart)
+  console.log(cart)*/
+
+  Promise.race([displayModal(filteredBooks, cart), buyFunction(filteredBooks, cart)])
+    .then((updatedCart) => {
+      console.log(updatedCart)
+      cart = updatedCart
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+
+  let cartButton = document.querySelector('.cartButton')
+  cartButton.addEventListener('click', async (event) => {
+
+    let totalPrice = 0
+
+    let modalTitle = document.querySelector('.modal-title')
+    let modalBody = document.querySelector('.modal-body')
+    let modalFooter = document.querySelector('.modal-footer')
+    modalTitle.innerHTML = 'YOUR CART'
+
+    let cartWithoutDuplicates = [...new Set(cart)]
+    cartWithoutDuplicates.sort()
+
+    let html = '<div class="container">'
+    html += '<div class="row">'
+
+    for (let i = 0; i < cartWithoutDuplicates.length; i++) {
+      let book = cartWithoutDuplicates[i]
+      let booksToCount = await filterFunction(book.id, cart)
+      let bookCount = booksToCount.length
+      let price = calculatePrice(book, bookCount)
+      totalPrice += price
+
+      html += '<p class="col-4 modalText">Title</p>'
+      html += '<p class="col-4 modalText">Amount</p>'
+      html += '<p class="col-4 modalText">Price</p>'
+
+      html += `
+        <p class="col-4">${book.title}</p>
+        <p class="col-4">${bookCount}</p>
+        <p class="col-4">${price} SEK</p>
+      `
+    }
+
+    html += '</div>'
+    html += '</div>'
+
+    html += '<span class="modalText">Total price: </span>'
+    html += `<span class="totalPrice">${totalPrice} SEK</span>`
+
+    modalBody.innerHTML = html
+    modalFooter.innerHTML = ''
+
+    let modal = new bootstrap.Modal(document.getElementById('myModal'))
+    modal.show()
+
+    function filterFunction(id, cart) {
+      let booksToCount = cart.filter((book) => {
+        return book.id === id
+      })
+      return (booksToCount)
+    }
+
+    function calculatePrice(book, bookCount) {
+      let price = book.price * bookCount
+      return (price)
+    }
+  })
 }
 
 // Main function

@@ -4,6 +4,7 @@
 
 main {
   font-family: 'Rubik';
+  margin-bottom: 20px;
 }
 
 .options {
@@ -12,7 +13,11 @@ main {
   font-size: 20px;
 }
 
-.bookList {}
+.cartButton {
+  float: right;
+  margin-right: 50px;
+  margin-left: -50px;
+}
 
 .bookImage {
   max-height: 200px;
@@ -21,6 +26,16 @@ main {
 header {
   background-color: rgb(92, 42, 98);
   height: 150px;
+}
+
+footer {
+  background-color: rgb(92, 42, 98);
+  height: 150px;
+}
+
+.footerText {
+  text-align: center;
+  font-weight: 800;
 }
 
 .logo {
@@ -48,4 +63,8 @@ header {
 
 .modalText {
   font-weight: 800;
+}
+
+.totalPrice {
+  margin-left: 10px;
 }
