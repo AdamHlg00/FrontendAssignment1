@@ -10,8 +10,8 @@ import {
 import { getCategories, getAuthors, addFilters } from './utils/filtering'
 import { displayModal } from './utils/informationModal'
 
-import * as bootstrap from 'bootstrap'
 import { buyFunction } from './utils/buy'
+import { cartFunction } from './cart'
 
 let chosenSortOption = 'Title (Ascending)',     // Default sort option
   books,
@@ -113,10 +113,13 @@ async function displayBooks() {
   html += '<div class="row">'
   for (let book of filteredBooks) {
     html += '<div class="col-sm-12 col-md-6 col-lg-4 p-2 border border-white border-3 bg-aqua book">'
-    //Gets the books corresponding image using the title
+    // Image is getting the same id as the book it belongs to
+    // Helps with identifying the correct book to display information about later
     html += `<img class="bookImage" data-image-id="${book.id}" src="${imageHelper(book.title)}">`
     html += `<p>${book.title}</p>`
     html += `<p>${book.price} SEK</p>`
+    // Each buy button gets the same id as the book it represents
+    // Helps with identifying the correct book to display information about later
     html += `<div><button class="btn btn-danger buy" data-button-id="${book.id}">Buy</button></div>`
     html += '</div>'
   }
@@ -124,11 +127,12 @@ async function displayBooks() {
   html += '</div>'
   html += '</div>'
 
+  // Displays the books
   document.querySelector('.bookList').innerHTML = html
 
-  // Modal for additional information
-  // Adds books into cart
-  // Race needed to allow cart to function properly
+  // Functions for displaying additional information and clicking buy buttons
+  // Since a buy button exists in the additional information modal,
+  // a race is needed to allow cart to function properly
   Promise.race([displayModal(filteredBooks, cart), buyFunction(filteredBooks, cart)])
     .then((updatedCart) => {
       console.log(updatedCart)
@@ -138,67 +142,8 @@ async function displayBooks() {
       console.error(error)
     })
 
-
-  let cartButton = document.querySelector('.cartButton')
-  cartButton.addEventListener('click', async (event) => {
-
-    let totalPrice = 0
-
-    let modalTitle = document.querySelector('.modal-title')
-    let modalBody = document.querySelector('.modal-body')
-    let modalFooter = document.querySelector('.modal-footer')
-    modalTitle.innerHTML = 'YOUR CART'
-
-    let cartWithoutDuplicates = [...new Set(cart)]
-    cartWithoutDuplicates.sort()
-
-    let html = '<div class="container">'
-    html += '<div class="row">'
-
-    for (let i = 0; i < cartWithoutDuplicates.length; i++) {
-      let book = cartWithoutDuplicates[i]
-      let booksToCount = await filterFunction(book.id, cart)
-      let bookCount = booksToCount.length
-      let price = calculatePrice(book, bookCount)
-      totalPrice += price
-
-      html += '<p class="col-3 modalText">Title</p>'
-      html += '<p class="col-3 modalText">Amount</p>'
-      html += '<p class="col-3 modalText">Unit price</p>'
-      html += '<p class="col-3 modalText">Price</p>'
-
-      html += `
-        <p class="col-3">${book.title}</p>
-        <p class="col-3">${bookCount}</p>
-        <p class="col-3">${book.price} SEK</p>
-        <p class="col-3">${price} SEK</p>
-      `
-    }
-
-    html += '</div>'
-    html += '</div>'
-
-    html += '<span class="modalText">Total price: </span>'
-    html += `<span class="totalPrice">${totalPrice} SEK</span>`
-
-    modalBody.innerHTML = html
-    modalFooter.innerHTML = ''
-
-    let modal = new bootstrap.Modal(document.getElementById('myModal'))
-    modal.show()
-
-    function filterFunction(id, cart) {
-      let booksToCount = cart.filter((book) => {
-        return book.id === id
-      })
-      return (booksToCount)
-    }
-
-    function calculatePrice(book, bookCount) {
-      let price = book.price * bookCount
-      return (price)
-    }
-  })
+  // Handles what happens when the cart button is clicked
+  cartFunction(cart)
 }
 
 // Main function
