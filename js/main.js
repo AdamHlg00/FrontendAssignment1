@@ -112,7 +112,7 @@ async function displayBooks() {
   html += '<div class="container overflow-hidden">'
   html += '<div class="row">'
   for (let book of filteredBooks) {
-    html += '<div class="col-4 p-2 border border-white border-3 bg-aqua book">'
+    html += '<div class="col-sm-12 col-md-6 col-lg-4 p-2 border border-white border-3 bg-aqua book">'
     //Gets the books corresponding image using the title
     html += `<img class="bookImage" data-image-id="${book.id}" src="${imageHelper(book.title)}">`
     html += `<p>${book.title}</p>`

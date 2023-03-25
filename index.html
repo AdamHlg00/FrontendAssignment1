@@ -11,20 +11,19 @@
 
 <body>
   <header class="container-fluid">
-    <div>
-      <img class="logo" src="/images/bookLogoTransparent.png" alt="The logo">
-      <div class="shopName">
-        THE BOOK SHOP
-      </div>
+    <div class="shopName">
+      THE BOOK SHOP
     </div>
   </header>
   <main>
-    <button class="btn btn-danger cartButton">Cart</button>
     <script type="module" src="/js/main.js"></script>
 
-    <div class="options">
-      <div class="sortingOptions"></div>
-      <div class="filters"></div>
+    <div class="options container">
+      <div class="row">
+        <div class="sortingOptions col-9 col-sm-10 col-md-11"></div>
+        <button class="btn btn-danger cartButton col-2 col-sm-2 col-md-1">Cart</button>
+        <div class="filters col-12 col-sm-12"></div>
+      </div>
     </div>
 
     <div class="bookList">

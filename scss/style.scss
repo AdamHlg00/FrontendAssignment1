@@ -9,14 +9,7 @@ main {
 
 .options {
   margin-top: 10px;
-  text-align: center;
   font-size: 20px;
-}
-
-.cartButton {
-  float: right;
-  margin-right: 50px;
-  margin-left: -50px;
 }
 
 .bookImage {
@@ -26,11 +19,17 @@ main {
 header {
   background-color: rgb(92, 42, 98);
   height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
   background-color: rgb(92, 42, 98);
   height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footerText {
@@ -38,18 +37,10 @@ footer {
   font-weight: 800;
 }
 
-.logo {
-  margin-top: 25px;
-  margin-left: 15px;
-  max-height: 100px;
-}
-
 .shopName {
   font-size: 30px;
   font-family: 'Rubik';
   font-weight: 800;
-  margin-top: -60px;
-  text-align: center;
 }
 
 .book {
@@ -67,4 +58,33 @@ footer {
 
 .totalPrice {
   margin-left: 10px;
+}
+
+@media (max-width: 575px) {
+  .options {
+    text-align: left;
+    margin-top: 10px;
+    font-size: 15px;
+    margin-left: 0px;
+  }
+
+  .cartButton {
+    margin-right: 8px;
+  }
+}
+
+// Special for Galaxy Fold
+@media (max-width: 300px) {
+  .options {
+    text-align: left;
+    margin-top: 10px;
+    font-size: 12px;
+    margin-left: 0px;
+  }
+
+  .cartButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
